@@ -46,7 +46,8 @@ store.dispatch(addDrink('Dr. Pepper'));
 
 
 store.dispatch({
-  type: 'REMOVE_DRINK'
+  type: 'REMOVE_DRINK',
+  payload: 'Surge'
 });
 
 store.dispatch({
