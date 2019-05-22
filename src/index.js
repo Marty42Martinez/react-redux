@@ -20,6 +20,14 @@ function reducer(state = initialState, action) {
       return { ...state, chips: action.payload };
     case 'REMOVE_CHIPS': 
       return { ...state, chips: null };
+    case 'EMPTY_BOX':
+      return { ...initialState };
+    case 'FILL_BOX': 
+      return { ...state, 
+        drink: action.payload.drink,
+        sandwich: action.payload.sandwich,
+        chips: action.payload.chips
+      };
     
     default: 
       return state;
@@ -57,5 +65,18 @@ store.dispatch({
 
 store.dispatch({
   type: 'REMOVE_DRINK',
+});
+
+store.dispatch({
+  type: 'FILL_BOX',
+  payload: {
+    drink: 'water',
+    sandwich: 'bread',
+    chips: 'the worst'
+  }
+});
+
+store.dispatch({
+  type: 'EMPTY_BOX'
 });
 
