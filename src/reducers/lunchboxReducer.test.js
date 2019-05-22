@@ -1,5 +1,5 @@
 import { lunchboxReducer } from './lunchboxReducer';
-import { addDrink, addSandwich } from '../actions/lunchboxActions';
+import { addDrink, addSandwich, addChips } from '../actions/lunchboxActions';
 
 describe('lunchbox Reducer test', () => {
   it('can perform the addDrink action', () => {
@@ -26,6 +26,19 @@ describe('lunchbox Reducer test', () => {
       drink: [],
       sandwich: ['mayonnaise'],
       chips: []
+    });
+  });
+  it('can perform the addChips action', () => {
+    const initState = {
+      drink: [],
+      sandwich: [],
+      chips: []
+    };
+    const result = lunchboxReducer(initState, addChips('Salty'));
+    expect(result).toEqual({
+      drink: [],
+      sandwich: [],
+      chips: ['Salty']
     });
   });
 });
