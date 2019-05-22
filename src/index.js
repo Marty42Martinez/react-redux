@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-
+import { ADD_DRINK, addDrink } from './actions/lunchboxActions';
 const initialState = {
   drink: [],
   sandwich: [],
@@ -8,22 +8,22 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch(action.type) {
-    case 'ADD_DRINK': 
+    case ADD_DRINK: 
       return { ...state, drink: [...state.drink, action.payload] };
     case 'REMOVE_DRINK': 
-      return { ...state, drink: state.drink.splice(-1) };
+      return { ...state, drink: state.drink.filter(item => item != action.payload) };
     case 'ADD_SANDWICH': 
       return { ...state, sandwich: [...state.sandwich, action.payload] };
     case 'REMOVE_SANDWICH': 
-      return { ...state, sandwich: state.sandwich.splice(-1) };
+      return { ...state, sandwich: state.sandwich.filter(item => item != action.payload) };
     case 'ADD_CHIPS': 
       return { ...state, chips: [...state.chips, action.payload] };
     case 'REMOVE_CHIPS': 
-      return { ...state, chips: state.chips.splice(-1) };
+      return { ...state, chips: state.chips.filter(item => item != action.payload) };
     case 'EMPTY_BOX':
       return { ...initialState };
     case 'FILL_BOX': 
-      return { ...state, 
+      return {  
         drink: [...state.drink, action.payload],
         sandwich: [...state.sandwich, action.payload],
         chips: [...state.chips, action.payload]
@@ -40,15 +40,10 @@ store.subscribe(() => {
   console.log('UPDATED', state);
 });
 
-store.dispatch({
-  type: 'ADD_DRINK',
-  payload: 'Surge'
-});
+store.dispatch(addDrink('Surge'));
 
-store.dispatch({
-  type: 'ADD_DRINK',
-  payload: 'Dr. Pepper'
-});
+store.dispatch(addDrink('Dr. Pepper'));
+
 
 store.dispatch({
   type: 'REMOVE_DRINK'
