@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  drink: null,
+  drink: [],
   sandwich: null,
   chips: null
 };
@@ -9,7 +9,7 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch(action.type) {
     case 'ADD_DRINK': 
-      return { ...state, drink: action.payload };
+      return { ...state, drink: [...state.drink, action.payload] };
     case 'REMOVE_DRINK': 
       return { ...state, drink: null };
     case 'ADD_SANDWICH': 
@@ -43,6 +43,11 @@ store.subscribe(() => {
 store.dispatch({
   type: 'ADD_DRINK',
   payload: 'Surge'
+});
+
+store.dispatch({
+  type: 'ADD_DRINK',
+  payload: 'Dr. Pepper'
 });
 
 store.dispatch({
