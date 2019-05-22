@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { ADD_DRINK, addDrink } from './actions/lunchboxActions';
+import { ADD_DRINK, addDrink, ADD_CHIPS, addChips, ADD_SANDWICH, addSandwich } from './actions/lunchboxActions';
 const initialState = {
   drink: [],
   sandwich: [],
@@ -12,11 +12,11 @@ function reducer(state = initialState, action) {
       return { ...state, drink: [...state.drink, action.payload] };
     case 'REMOVE_DRINK': 
       return { ...state, drink: state.drink.filter(item => item != action.payload) };
-    case 'ADD_SANDWICH': 
+    case ADD_SANDWICH: 
       return { ...state, sandwich: [...state.sandwich, action.payload] };
     case 'REMOVE_SANDWICH': 
       return { ...state, sandwich: state.sandwich.filter(item => item != action.payload) };
-    case 'ADD_CHIPS': 
+    case ADD_CHIPS: 
       return { ...state, chips: [...state.chips, action.payload] };
     case 'REMOVE_CHIPS': 
       return { ...state, chips: state.chips.filter(item => item != action.payload) };
@@ -50,15 +50,9 @@ store.dispatch({
   payload: 'Surge'
 });
 
-store.dispatch({
-  type: 'ADD_SANDWICH',
-  payload: 'PB & Honey'
-});
+store.dispatch(addSandwich('PB & Honey'));
 
-store.dispatch({
-  type: 'ADD_CHIPS',
-  payload: 'Zapps VooDoo'
-});
+store.dispatch(addChips('Zapps'));
 
 store.dispatch({
   type: 'REMOVE_CHIPS',
