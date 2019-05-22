@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import { ADD_DRINK, addDrink, ADD_CHIPS, addChips, ADD_SANDWICH, addSandwich } from './actions/lunchboxActions';
+import { REMOVE_DRINK, removeDrink, REMOVE_CHIPS, removeChips, REMOVE_SANDWICH, removeSandwich } from './actions/lunchboxActions';
 const initialState = {
   drink: [],
   sandwich: [],
@@ -10,23 +11,23 @@ function reducer(state = initialState, action) {
   switch(action.type) {
     case ADD_DRINK: 
       return { ...state, drink: [...state.drink, action.payload] };
-    case 'REMOVE_DRINK': 
+    case REMOVE_DRINK: 
       return { ...state, drink: state.drink.filter(item => item != action.payload) };
     case ADD_SANDWICH: 
       return { ...state, sandwich: [...state.sandwich, action.payload] };
-    case 'REMOVE_SANDWICH': 
+    case REMOVE_SANDWICH: 
       return { ...state, sandwich: state.sandwich.filter(item => item != action.payload) };
     case ADD_CHIPS: 
       return { ...state, chips: [...state.chips, action.payload] };
-    case 'REMOVE_CHIPS': 
+    case REMOVE_CHIPS: 
       return { ...state, chips: state.chips.filter(item => item != action.payload) };
     case 'EMPTY_BOX':
       return { ...initialState };
     case 'FILL_BOX': 
       return {  
-        drink: [...state.drink, action.payload],
-        sandwich: [...state.sandwich, action.payload],
-        chips: [...state.chips, action.payload]
+        drink: [...state.drink, action.payload.drink],
+        sandwich: [...state.sandwich, action.payload.sandwich],
+        chips: [...state.chips, action.payload.chips]
       };
     
     default: 
@@ -45,26 +46,17 @@ store.dispatch(addDrink('Surge'));
 store.dispatch(addDrink('Dr. Pepper'));
 
 
-store.dispatch({
-  type: 'REMOVE_DRINK',
-  payload: 'Surge'
-});
+store.dispatch(removeDrink('Surge'));
 
 store.dispatch(addSandwich('PB & Honey'));
 
 store.dispatch(addChips('Zapps'));
 
-store.dispatch({
-  type: 'REMOVE_CHIPS',
-});
+store.dispatch(removeChips('Zapps'));
 
-store.dispatch({
-  type: 'REMOVE_SANDWICH',
-});
+store.dispatch(removeSandwich('PB & Honey'));
 
-store.dispatch({
-  type: 'REMOVE_DRINK',
-});
+store.dispatch(removeDrink('Dr. Pepper'));
 
 store.dispatch({
   type: 'FILL_BOX',
