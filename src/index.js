@@ -2,8 +2,8 @@ import { createStore } from 'redux';
 
 const initialState = {
   drink: [],
-  sandwich: null,
-  chips: null
+  sandwich: [],
+  chips: []
 };
 
 function reducer(state = initialState, action) {
@@ -13,20 +13,20 @@ function reducer(state = initialState, action) {
     case 'REMOVE_DRINK': 
       return { ...state, drink: state.drink.splice(-1) };
     case 'ADD_SANDWICH': 
-      return { ...state, sandwich: action.payload };
+      return { ...state, sandwich: [...state.sandwich, action.payload] };
     case 'REMOVE_SANDWICH': 
-      return { ...state, sandwich: null };
+      return { ...state, sandwich: state.sandwich.splice(-1) };
     case 'ADD_CHIPS': 
-      return { ...state, chips: action.payload };
+      return { ...state, chips: [...state.chips, action.payload] };
     case 'REMOVE_CHIPS': 
-      return { ...state, chips: null };
+      return { ...state, chips: state.chips.splice(-1) };
     case 'EMPTY_BOX':
       return { ...initialState };
     case 'FILL_BOX': 
       return { ...state, 
-        drink: action.payload.drink,
-        sandwich: action.payload.sandwich,
-        chips: action.payload.chips
+        drink: [...state.drink, action.payload],
+        sandwich: [...state.sandwich, action.payload],
+        chips: [...state.chips, action.payload]
       };
     
     default: 
