@@ -11,7 +11,7 @@ function reducer(state = initialState, action) {
     case 'ADD_DRINK': 
       return { ...state, drink: [...state.drink, action.payload] };
     case 'REMOVE_DRINK': 
-      return { ...state, drink: null };
+      return { ...state, drink: state.drink.splice(-1) };
     case 'ADD_SANDWICH': 
       return { ...state, sandwich: action.payload };
     case 'REMOVE_SANDWICH': 
@@ -48,6 +48,10 @@ store.dispatch({
 store.dispatch({
   type: 'ADD_DRINK',
   payload: 'Dr. Pepper'
+});
+
+store.dispatch({
+  type: 'REMOVE_DRINK'
 });
 
 store.dispatch({
