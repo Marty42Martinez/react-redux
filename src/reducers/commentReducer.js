@@ -18,8 +18,9 @@ export function comments(state = initialState, action) {
     }
     case DELETE_POST: {
       const post = action.payload.post_index;
-      delete state[post];
-      return { ...state };
+      const newState = { ...state };
+      delete newState[post];
+      return { ...newState };
     }
     default: 
       return state;
