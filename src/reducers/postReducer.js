@@ -9,6 +9,6 @@ export function postReducer(state = initialState, action) {
     case CREATE_POST:
       return { ...state, posts: [...state.posts, action.payload] };
     case DELETE_POST:
-      return { ...state, posts: state.posts.filter(post => post.title != action.payload.title)}
+      return { ...state, posts: [...state.posts.slice(0, action.payload.post_index), ...state.posts.slice(action.payload.post_index + 1)] };
   }
 }

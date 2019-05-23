@@ -26,7 +26,7 @@ describe('Post Reducer', () => {
       }]
     };
     const result = postReducer(initState, deletePost({
-      title: 'TBD'
+      index: 0
     }));
     expect(result).toEqual({
       posts: []
