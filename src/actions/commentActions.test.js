@@ -1,4 +1,4 @@
-import { createComment, CREATE_COMMENT, deleteComment, DELETE_COMMENT } from "./commentActions";
+import { createComment, CREATE_COMMENT, deleteComment, DELETE_COMMENT } from './commentActions';
 
 describe('Comment Actions tests', () => {
   it('can create a comment', () => {

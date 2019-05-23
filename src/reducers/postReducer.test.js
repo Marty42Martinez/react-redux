@@ -1,4 +1,4 @@
-import { reducer } from './postReducer';
+import { postReducer } from './postReducer';
 import { createPost, deletePost } from '../actions/postActions';
 
 describe('Post Reducer', () => {
@@ -6,7 +6,7 @@ describe('Post Reducer', () => {
     const initState = {
       posts: []
     };
-    const result = reducer(initState, createPost({
+    const result = postReducer(initState, createPost({
       title: 'testing posts',
       body: 'nailed it'
     }));
@@ -25,7 +25,7 @@ describe('Post Reducer', () => {
         body: 'delete mee'
       }]
     };
-    const result = reducer(initState, deletePost({
+    const result = postReducer(initState, deletePost({
       title: 'TBD'
     }));
     expect(result).toEqual({
