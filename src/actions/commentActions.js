@@ -8,3 +8,8 @@ export const createComment = comment => {
     }
   };
 };
+
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const deleteComment = comment => {
+  return { };
+};
