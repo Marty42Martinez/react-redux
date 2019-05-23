@@ -14,7 +14,7 @@ export const deletePost = post => {
   return {
     type: DELETE_POST,
     payload: {
-      title: post.title
+      post_index: post.index
     }
   };
 };

@@ -11,11 +11,11 @@ describe('Blog Action Creators', () => {
     });
   });
   it('can delete a post', () => {
-    const post = deletePost({ title: 'you gettin axed' });
+    const post = deletePost({ index: 3 });
 
     expect(post.type).toEqual(DELETE_POST);
     expect(post.payload).toEqual({
-      title: 'you gettin axed'
+      post_index: 3
     });
   });
 });
