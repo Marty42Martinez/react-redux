@@ -9,6 +9,6 @@ export function commentReducer(state = initialState, action) {
       if(!state[action.payload.post_index]) {
         return { ...state, [action.payload.post_index]: [action.payload.body] };
       }
-      return { ...state, [action.payload.post_index]: [state[action.payload.post_index], action.payload.body] };
+      return { ...state, [action.payload.post_index]: [...state[action.payload.post_index], action.payload.body] };
   }
 }
