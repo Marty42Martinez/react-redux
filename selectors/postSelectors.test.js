@@ -1,4 +1,4 @@
-import { getPosts } from './postSelectors';
+import { getPosts, getPost } from './postSelectors';
 
 describe('post Selector tests', () => {
   it('getPosts Selector will grab all posts', () => {
@@ -17,4 +17,18 @@ describe('post Selector tests', () => {
       { title: 'Red fish', body: 'Blue fish' }
     ]);
   });
+  it('getPost will grab a single post by index', () => {
+    const state = {
+      posts: [
+        { title: 'One', body: 'fish' },
+        { title: 'Two', body: 'fishes' },
+        { title: 'Red fish', body: 'Blue fish' }
+      ]
+    };
+    const post = getPost(state, index);
+    expect(post).toEqual({
+      title: 'Red fish',
+      body: 'Blue fish'
+    });
+  })
 });
