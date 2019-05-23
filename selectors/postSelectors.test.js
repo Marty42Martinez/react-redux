@@ -25,7 +25,7 @@ describe('post Selector tests', () => {
         { title: 'Red fish', body: 'Blue fish' }
       ]
     };
-    const post = getPost(state, index);
+    const post = getPost(state, 2);
     expect(post).toEqual({
       title: 'Red fish',
       body: 'Blue fish'
