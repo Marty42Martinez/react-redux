@@ -1,35 +1,28 @@
-import { postReducer } from './postReducer';
+import { posts } from './postReducer';
 import { createPost, deletePost } from '../actions/postActions';
 
 describe('Post Reducer', () => {
   it('can handle createPost action', () => {
-    const initState = {
-      posts: []
-    };
-    const result = postReducer(initState, createPost({
+    const initState = [];
+    const result = posts(initState, createPost({
       title: 'testing posts',
       body: 'nailed it'
     }));
-    expect(result).toEqual({
-      posts: [{
-        title: 'testing posts',
-        body: 'nailed it'
-      }]
-    });
+    expect(result).toEqual([{
+      title: 'testing posts',
+      body: 'nailed it'
+    }]);
   });
 
   it('can handle deletePost action', () => {
-    const initState = {
-      posts: [{
-        title: 'TBD',
-        body: 'delete mee'
-      }]
-    };
-    const result = postReducer(initState, deletePost({
+    const initState = [{
+      title: 'TBD',
+      body: 'delete mee'
+    }];
+
+    const result = posts(initState, deletePost({
       index: 0
     }));
-    expect(result).toEqual({
-      posts: []
-    });
+    expect(result).toEqual([]);
   });
 });

@@ -1,15 +1,13 @@
 import { CREATE_POST, DELETE_POST } from '../actions/postActions';
 
-const initialState = {
-  posts: []
-};
+const initialState = [];
 
 export function posts(state = initialState, action) {
   switch(action.type) {
     case CREATE_POST:
-      return { ...state, posts: [...state.posts, action.payload] };
+      return [...state, action.payload];
     case DELETE_POST:
-      return { ...state, posts: [...state.posts.slice(0, action.payload.post_index), ...state.posts.slice(action.payload.post_index + 1)] };
+      return [...state.slice(0, action.payload.post_index), ...state.slice(action.payload.post_index + 1)];
     default:
       return state;
   }
