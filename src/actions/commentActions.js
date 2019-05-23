@@ -11,5 +11,11 @@ export const createComment = comment => {
 
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const deleteComment = comment => {
-  return { };
+  return {
+    type: DELETE_COMMENT,
+    payload: {
+      post_index: comment.post_index,
+      comment_index: comment.comment_index
+    }
+  };
 };
