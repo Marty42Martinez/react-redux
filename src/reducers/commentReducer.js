@@ -21,5 +21,7 @@ export function commentReducer(state = initialState, action) {
       delete state[post];
       return { ...state };
     }
+    default: 
+      return state;
   }
 }

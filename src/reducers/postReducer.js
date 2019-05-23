@@ -10,5 +10,7 @@ export function postReducer(state = initialState, action) {
       return { ...state, posts: [...state.posts, action.payload] };
     case DELETE_POST:
       return { ...state, posts: [...state.posts.slice(0, action.payload.post_index), ...state.posts.slice(action.payload.post_index + 1)] };
+    default:
+      return state;
   }
 }
