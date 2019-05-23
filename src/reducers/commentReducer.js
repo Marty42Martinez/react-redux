@@ -4,7 +4,7 @@ import { DELETE_POST } from '../actions/postActions';
 const initialState = { };
 
 
-export function commentReducer(state = initialState, action) {
+export function comments(state = initialState, action) {
   switch(action.type) {
     case CREATE_COMMENT:
       if(!state[action.payload.post_index]) {

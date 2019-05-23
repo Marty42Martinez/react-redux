@@ -1,8 +1,8 @@
-import { CombineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import { posts } from './postReducer';
 import { comments } from './commentReducer';
 
-export default CombineReducers({
+export default combineReducers({
   posts,
   comments
 });
