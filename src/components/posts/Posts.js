@@ -18,7 +18,8 @@ function Posts({ posts }) {
 Posts.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired
+    body: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
   })).isRequired
 };
 

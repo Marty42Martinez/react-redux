@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom';
 
 function Post({ post }) {
   return (
-    <p>{post.title}</p>
+    <>
+      <Link to={`/posts/${post.id}`}>
+        {post.title}
+      </Link>
+    </>
   );
 }
 
 Post.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired
+    body: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
   }).isRequired
 };
 
