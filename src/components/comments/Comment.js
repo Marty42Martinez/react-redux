@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Comment({ comment, id }) {
   return (
     <>
-      <p>{comment.body}</p>
+      <p>{comment}</p>
     </>
   );
 }

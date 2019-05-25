@@ -4,7 +4,7 @@ import CommentForm from '../../components/comments/CommentForm';
 
 const mapDispatchToProps = (dispatch, props) => ({
   onSubmit(comment) {
-    dispatch(createComment(props.post_index, comment));
+    dispatch(createComment({ post_index: props.post_index, body: comment }));
   }
 });
 
