@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+//eslint-disable-next-line 
 function Comment({ comment, id }) {
   return (
     <>

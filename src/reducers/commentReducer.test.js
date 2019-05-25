@@ -1,4 +1,4 @@
-import { commentReducer } from './commentReducer';
+import { comments } from './commentReducer';
 import { createComment, deleteComment } from '../actions/commentActions';
 import { deletePost } from '../actions/postActions';
 
@@ -6,7 +6,7 @@ describe('comment Reducer tests', () => {
   it('handles a createComment action with no previous comments', () => {
     const initState = {};
 
-    const newState = commentReducer(initState, createComment({ 
+    const newState = comments(initState, createComment({ 
       post_index: 4,
       body: 'What a post!'
     }));
@@ -19,7 +19,7 @@ describe('comment Reducer tests', () => {
       4: ['What a post!', 'You stink, go home']
     };
 
-    const newState = commentReducer(initState, createComment({ 
+    const newState = comments(initState, createComment({ 
       post_index: 4,
       body: 'That was not nice'
     }));
@@ -31,7 +31,7 @@ describe('comment Reducer tests', () => {
     const initState = {
       4: ['What a post!', 'You stink, go home', 'That was not nice']
     };
-    const newState = commentReducer(initState, deleteComment({
+    const newState = comments(initState, deleteComment({
       post_index: 4,
       comment_index: 1 
     }));
@@ -43,7 +43,7 @@ describe('comment Reducer tests', () => {
     const initState = {
       4: ['What a post!', 'You stink, go home', 'That was not nice']
     };
-    const newState = commentReducer(initState, deletePost({
+    const newState = comments(initState, deletePost({
       index: 4
     }));
     expect(newState).toEqual({});
